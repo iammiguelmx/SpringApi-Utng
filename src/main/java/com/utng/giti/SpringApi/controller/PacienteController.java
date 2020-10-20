@@ -17,7 +17,7 @@ public class PacienteController {
 
     @PostMapping("/addPaciente")
     public int addPaciente(@RequestBody Paciente p){
-        var resp = service.addPaciente(p);
+        int resp = service.addPaciente(p);
         return resp;
     }
 }
