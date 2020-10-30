@@ -51,17 +51,19 @@ public class MedicamentoDAOImpl implements MedicamentoDAO {
 
     @Override
     public List<Medicamento> getMedicamentos(int pacienteId) {
-        return template.query("SELECT pa.paciente_id, " +
-                        "pa.nombre AS paciente, me.nombre AS medicamento," +
-                        "ti.nombre AS tipo_medicamento  " +
+        return template.query("SELECT me.medicamento_id as medicamento_id, me.nombre AS medicamento, " +
+                        " pa.paciente_id, ti.tipo_id, pa.nombre AS paciente," +
+                        " ti.nombre AS tipo_medicamento  " +
                 "FROM medicamento AS me JOIN paciente AS pa USING (paciente_id)  " +
                 "JOIN tipo AS ti USING(tipo_id) WHERE me.paciente_id = ?",
                 new Object[]{pacienteId}, (rs, rowNum) -> new Medicamento(
-                        rs.getInt("paciente_id"),
-                        rs.getString("paciente"),
+                        rs.getInt("medicamento_id"),
                         rs.getString("medicamento"),
-                        rs.getString("tipo_medicamento")//,
-                        //rs.getByte("imagen")
+                        rs.getInt("paciente_id"),
+                        rs.getInt("tipo_id"),
+                        rs.getString("paciente"),
+                        rs.getString("tipo_medicamento")
+
                 )
                 );
     }

@@ -16,14 +16,15 @@ public class Medicamento {
     private String tipoJarabe;
 
 
-    public Medicamento(int medicamentoId, String nombre,
-                       String nombrePaciente, String tipoJarabe //, byte img_medicamento
-    ) {
+    public Medicamento(int medicamentoId, String nombre, /*byte img_medicamento,*/ int pacienteId, int tipoId,
+                       String nombrePaciente, String tipoJarabe) {
         this.medicamentoId = medicamentoId;
         this.nombre = nombre;
+        //this.img_medicamento = img_medicamento;
+        this.pacienteId = pacienteId;
+        this.tipoId = tipoId;
         this.nombrePaciente = nombrePaciente;
         this.tipoJarabe = tipoJarabe;
-       // this.img_medicamento = img_medicamento;
     }
 
     public String getNombrePaciente() {
