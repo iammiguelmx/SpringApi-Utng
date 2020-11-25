@@ -8,11 +8,11 @@ import java.util.List;
 
 public interface MedicamentoDAO {
 
-    Boolean addMedicamento (String nombreMedicamenteo, int pacienteId,int tipoId, MultipartFile file) throws IOException;
+    Boolean addMedicamento (String nombreMedicamenteo, int pacienteId,String tipoMedic, MultipartFile file) throws IOException;
 
     List<Medicamento> getMedicamentos(int pacienteId);
 
-    Boolean updateMedicamentos(MultipartFile file , String nombre, int tipoId, int medicamentoId, int pacienteId) throws IOException;
+    Boolean updateMedicamentos(MultipartFile file , String nombre, String tipoMedic, int medicamentoId, int pacienteId) throws IOException;
 
     int deleteMedicamento(int medicamentoId);
 

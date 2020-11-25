@@ -18,11 +18,11 @@ public class MedicamentoServiceImpl implements MedicamentoService {
     private MedicamentoDAO service;
 
     @Override
-    public Message addMedicamento(String nombreMedicamenteo, int pacienteId, int tipoId, MultipartFile file)
+    public Message addMedicamento(String nombreMedicamenteo, int pacienteId, String tipoMedic, MultipartFile file)
             throws IOException {
 
         Message message = new Message();
-        if (service.addMedicamento(nombreMedicamenteo, pacienteId, tipoId, file) == false) {
+        if (service.addMedicamento(nombreMedicamenteo, pacienteId, tipoMedic, file) == false) {
             message.setCode("1");
             message.setMessage("Exito");
             message.setDescription("Los Datos se han guardado");
@@ -40,24 +40,36 @@ public class MedicamentoServiceImpl implements MedicamentoService {
     }
 
     @Override
-    public Message updateMedicamentos(MultipartFile file , String nombre, int tipoId, int medicamentoId, int pacienteId)
+    public Message updateMedicamentos(MultipartFile file , String nombre, String tipoMedic, int medicamentoId, int pacienteId)
             throws IOException {
         Message message = new Message();
-        if (service.updateMedicamentos(file, nombre, tipoId, medicamentoId, pacienteId) == false) {
+        if (service.updateMedicamentos(file, nombre, tipoMedic, medicamentoId, pacienteId) == false) {
             message.setCode("1");
             message.setMessage("Exito");
             message.setDescription("Los Datos se actualizaron correctamente");
         } else {
             message.setCode("1");
             message.setMessage("Error");
-            message.setDescription("Los Datos no se han actualizaron");
+            message.setDescription("Los Datos no se actualizaron");
         }
         return message;
     }
 
     @Override
-    public int deleteMedicamento(int medicamentoId) {
-        return service.deleteMedicamento(medicamentoId);
+    public Message deleteMedicamento(int medicamentoId){
+
+        Message message = new Message();
+        if (service.deleteMedicamento(medicamentoId) == 1) {
+            message.setCode("1");
+            message.setMessage("Exito");
+            message.setDescription("Los Datos se han eliminado");
+        } else {
+            message.setCode("0");
+            message.setMessage("Error");
+            message.setDescription("Los Datos no se han eliminado");
+        }
+        return message;
+
     }
 
 }

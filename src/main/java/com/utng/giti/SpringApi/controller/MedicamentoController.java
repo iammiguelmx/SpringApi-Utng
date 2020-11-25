@@ -21,9 +21,9 @@ public class MedicamentoController {
     @PostMapping("/addMedicamento")
     public Message addMedicamento(@RequestParam("nombreMedicamenteo") String nombreMedicamenteo,
                                   @RequestParam("pacienteId") int pacienteId,
-                                  @RequestParam("tipoId") int tipoId,
+                                  @RequestParam("tipoMedic") String tipoMedic,
                               @RequestParam("file") MultipartFile file) throws IOException {
-        Message resp = service.addMedicamento(nombreMedicamenteo,pacienteId,tipoId, file);
+        Message resp = service.addMedicamento(nombreMedicamenteo,pacienteId,tipoMedic, file);
         return resp;
     }
 
@@ -37,19 +37,20 @@ public class MedicamentoController {
     public Message updateMedicamentos(@RequestParam("nombre") String nombre,
                                       @RequestParam("medicamentoId") int medicamentoId,
                                       @RequestParam("pacienteId") int pacienteId,
-                                      @RequestParam("tipoId") int tipoId,
+                                      @RequestParam("tipoMedic") String tipoMedic,
                                       @RequestParam("file") MultipartFile file)throws IOException {
-        Message resp = service.updateMedicamentos(file , nombre, tipoId, medicamentoId, pacienteId);
+        Message resp = service.updateMedicamentos(file , nombre, tipoMedic, medicamentoId, pacienteId);
         return resp;
 
     }
 
     @DeleteMapping("/deleteMedicamento/{medicamentoId}")
-    public int deleteMedicamento(@PathVariable int medicamentoId){
+    public Message deleteMedicamento(@PathVariable int medicamentoId){
 
         System.out.println("medicamentoId" + medicamentoId);
 
-        return service.deleteMedicamento(medicamentoId);
+        Message resp = service.deleteMedicamento(medicamentoId);
+        return resp;
 
     }
 

@@ -1,5 +1,6 @@
 package com.utng.giti.SpringApi.controller;
 
+import com.utng.giti.SpringApi.model.Message;
 import com.utng.giti.SpringApi.model.Paciente;
 import com.utng.giti.SpringApi.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +16,8 @@ public class PacienteController {
     private PacienteService service;
 
     @PostMapping("/addPaciente")
-    public int addPaciente(@RequestBody Paciente p){
-        int resp = service.addPaciente(p);
+    public Message addPaciente(@RequestBody Paciente p){
+        Message resp = service.addPaciente(p);
         return resp;
     }
 
@@ -28,9 +29,9 @@ public class PacienteController {
     }
 
     @PutMapping("/updatePaciente")
-    public int updatePaciente(@RequestBody Paciente p){
-
-        return service.updatePaciente(p);
+    public Message updatePaciente(@RequestBody Paciente p){
+        Message resp = service.updatePaciente(p);
+        return resp;
 
     }
 

@@ -11,20 +11,18 @@ public class Medicamento {
     private String nombre;
     private byte img_medicamento;
     private  int pacienteId;
-    private int tipoId;
+    private String tipoMedic;
     private String nombrePaciente;
-    private String tipoJarabe;
 
 
-    public Medicamento(int medicamentoId, String nombre, /*byte img_medicamento,*/ int pacienteId, int tipoId,
-                       String nombrePaciente, String tipoJarabe) {
+    public Medicamento(int medicamentoId, String nombre, /*byte img_medicamento,*/ int pacienteId, String tipoMedic,
+                       String nombrePaciente) {
         this.medicamentoId = medicamentoId;
         this.nombre = nombre;
         //this.img_medicamento = img_medicamento;
         this.pacienteId = pacienteId;
-        this.tipoId = tipoId;
+        this.tipoMedic = tipoMedic;
         this.nombrePaciente = nombrePaciente;
-        this.tipoJarabe = tipoJarabe;
     }
 
     public String getNombrePaciente() {
@@ -33,14 +31,6 @@ public class Medicamento {
 
     public void setNombrePaciente(String nombrePaciente) {
         this.nombrePaciente = nombrePaciente;
-    }
-
-    public String getTipoJarabe() {
-        return tipoJarabe;
-    }
-
-    public void setTipoJarabe(String tipoJarabe) {
-        this.tipoJarabe = tipoJarabe;
     }
 
     public int getMedicamentoId() {
@@ -75,11 +65,11 @@ public class Medicamento {
         this.pacienteId = pacienteId;
     }
 
-    public int getTipoId() {
-        return tipoId;
+    public String getTipoMedic() {
+        return tipoMedic;
     }
 
-    public void setTipoId(int tipoId) {
-        this.tipoId = tipoId;
+    public void setTipoMedic(String tipoMedic) {
+        this.tipoMedic = tipoMedic;
     }
 }
