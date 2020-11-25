@@ -12,14 +12,24 @@ public class Paciente {
     private double peso;
     private double estatura;
     private double imc;
+    private String password;
 
-    public Paciente(int pacienteId, String nombre, int edad, double peso, double estatura, double imc) {
+    public Paciente(int pacienteId, String nombre, int edad, double peso, double estatura, double imc,String password) {
         this.pacienteId = pacienteId;
         this.nombre = nombre;
         this.edad = edad;
         this.peso = peso;
         this.estatura = estatura;
         this.imc = imc;
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getPacienteId() {

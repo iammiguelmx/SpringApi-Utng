@@ -10,7 +10,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/recordatorios")
@@ -32,6 +31,26 @@ public class MedicamentoController {
     public List<Medicamento> getMedicamentos(@Param("pacienteId") int pacienteId){
         System.out.println(pacienteId);
         return service.getMedicamentos( pacienteId);
+    }
+
+    @PutMapping("/updateMedicamentos")
+    public Message updateMedicamentos(@RequestParam("nombre") String nombre,
+                                      @RequestParam("medicamentoId") int medicamentoId,
+                                      @RequestParam("pacienteId") int pacienteId,
+                                      @RequestParam("tipoId") int tipoId,
+                                      @RequestParam("file") MultipartFile file)throws IOException {
+        Message resp = service.updateMedicamentos(file , nombre, tipoId, medicamentoId, pacienteId);
+        return resp;
+
+    }
+
+    @DeleteMapping("/deleteMedicamento/{medicamentoId}")
+    public int deleteMedicamento(@PathVariable int medicamentoId){
+
+        System.out.println("medicamentoId" + medicamentoId);
+
+        return service.deleteMedicamento(medicamentoId);
+
     }
 
 }

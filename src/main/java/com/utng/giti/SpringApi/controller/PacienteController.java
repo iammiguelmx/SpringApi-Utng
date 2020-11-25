@@ -26,4 +26,20 @@ public class PacienteController {
          return service.getPacientes();
 
     }
+
+    @PutMapping("/updatePaciente")
+    public int updatePaciente(@RequestBody Paciente p){
+
+        return service.updatePaciente(p);
+
+    }
+
+   /* @DeleteMapping("/deletePaciente/{pacienteId}")
+    public int deletePaciente(@PathVariable int pacienteId){
+
+        System.out.println("pacienteId" + pacienteId);
+
+        return service.deletePaciente(pacienteId);
+
+    }*/
 }

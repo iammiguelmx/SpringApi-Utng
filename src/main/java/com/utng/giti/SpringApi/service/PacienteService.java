@@ -9,4 +9,7 @@ public interface PacienteService {
     int addPaciente (Paciente p);
 
     List<Paciente> getPacientes();
+
+    int updatePaciente(Paciente paciente);
+
 }
